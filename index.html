@@ -14,7 +14,14 @@
 </head>
 <body>
     <div id="header">
-        <h1>Ethiopia RSO Incident Tracker</h1>
+        <div class="header-content">
+            <h1>Ethiopia RSO Incident Tracker</h1>
+            <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
         <div id="controls">
             <div class="control-group">
                 <label for="timeRange">Time Range:</label>
@@ -42,6 +49,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Mobile menu backdrop -->
+    <div id="mobileBackdrop" class="mobile-backdrop"></div>
 
     <div id="mapContainer">
         <div id="map"></div>

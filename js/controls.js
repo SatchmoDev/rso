@@ -60,6 +60,9 @@ function setupEventListeners() {
     // Keyboard shortcuts
     document.addEventListener('keydown', handleKeyboardShortcuts);
     
+    // Mobile menu toggle
+    setupMobileMenu();
+    
     console.log('Event listeners set up');
 }
 
@@ -393,3 +396,61 @@ window.addEventListener('unhandledrejection', (event) => {
     console.error('Unhandled promise rejection:', event.reason);
     showError('An unexpected error occurred. Please refresh the page.');
 });
+
+// Mobile menu functionality
+function setupMobileMenu() {
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    const controls = document.getElementById('controls');
+    const backdrop = document.getElementById('mobileBackdrop');
+    
+    if (!menuToggle) return; // Not on mobile or elements not found
+    
+    // Toggle menu
+    function toggleMenu() {
+        const isOpen = controls.classList.contains('open');
+        
+        if (isOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+    
+    // Open menu
+    function openMenu() {
+        controls.classList.add('open');
+        backdrop.classList.add('active');
+        menuToggle.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+    
+    // Close menu
+    function closeMenu() {
+        controls.classList.remove('open');
+        backdrop.classList.remove('active');
+        menuToggle.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+    
+    // Event listeners
+    menuToggle.addEventListener('click', toggleMenu);
+    backdrop.addEventListener('click', closeMenu);
+    
+    // Close menu when clicking on control items (for better UX)
+    const controlInputs = controls.querySelectorAll('select, button');
+    controlInputs.forEach(input => {
+        input.addEventListener('click', () => {
+            // Close menu after a brief delay to allow the action to complete
+            setTimeout(closeMenu, 100);
+        });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && controls.classList.contains('open')) {
+            closeMenu();
+        }
+    });
+    
+    console.log('Mobile menu functionality initialized');
+}
