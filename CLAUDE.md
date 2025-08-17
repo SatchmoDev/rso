@@ -8,30 +8,32 @@ This is the ET-RSO-Incident-Tracker, a web-based incident mapping application fo
 
 ## Commands
 
-### Development Server
+### Live Application
 ```bash
-# Start local development server (required for file loading due to CORS)
-python3 -m http.server 8080
+# The application is live at:
+# https://satchmodev.github.io/rso/
 
-# Open browser to http://localhost:8080
+# No local server needed - application runs directly in browser
 ```
 
-### Testing
-- Application is client-side only - test by opening in browser
+### Testing and Development
+- Test live application at https://satchmodev.github.io/rso/
+- For local development: any local server (CORS requirements for file loading)
 - Check browser console for data loading and processing errors
 - Verify all CSV and GeoJSON files load successfully
 
 ### Deployment
 ```bash
-# For GitHub Pages deployment to dipnote.github.io
-# See DEPLOYMENT.md and GITHUB_PAGES_SETUP.md for detailed instructions
+# Current repository: https://github.com/SatchmoDev/rso
+# Automatic deployment to GitHub Pages on push to main branch
 
-# Quick deployment steps:
-git clone https://github.com/[username]/dipnote.github.io.git
-mkdir dipnote.github.io/ethiopia-tracker
-# Copy all files to ethiopia-tracker/ subdirectory
-git add . && git commit -m "Add Ethiopia RSO Incident Tracker"
+# To deploy changes:
+git add .
+git commit -m "Update application"
 git push origin main
+
+# GitHub Pages will automatically deploy to:
+# https://satchmodev.github.io/rso/
 ```
 
 ## Architecture Overview
@@ -133,9 +135,9 @@ GeoJSON with properties: shapeName, shapeISO, shapeID, shapeGroup, shapeType, po
 │   └── Conflict-Incident-RSO.csv # Regional conflict incident data
 ├── layers/
 │   └── geoBoundaries-ETH-ADM3.geojson # Ethiopian woreda boundaries
-├── README.md               # User documentation and feature overview
-├── DEPLOYMENT.md           # GitHub Pages deployment instructions
-└── GITHUB_PAGES_SETUP.md   # Step-by-step setup for dipnote.github.io
+├── README.md               # User documentation and GitHub Pages info
+├── CLAUDE.md               # Development guidance and architecture
+└── .gitignore             # Git ignore patterns
 ```
 
 ## Development Context and Common Tasks
