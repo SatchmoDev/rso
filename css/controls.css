@@ -27,6 +27,8 @@
     cursor: pointer;
     padding: 0;
     margin-left: 10px;
+    z-index: 10002;
+    position: relative;
 }
 
 .mobile-menu-toggle span {
@@ -59,12 +61,23 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1500;
+    z-index: 10000;
     transition: opacity 0.3s ease;
 }
 
 .mobile-backdrop.active {
     display: block;
+}
+
+/* Hide map popups when mobile menu is open */
+@media (max-width: 768px) {
+    #controls.open ~ #mapContainer .leaflet-popup {
+        display: none !important;
+    }
+    
+    #controls.open ~ #mapContainer .leaflet-tooltip {
+        display: none !important;
+    }
 }
 
 .control-group {
@@ -145,7 +158,7 @@
         padding: 60px 20px 20px;
         box-shadow: -5px 0 15px rgba(0,0,0,0.3);
         transition: right 0.3s ease;
-        z-index: 2000;
+        z-index: 10001;
         overflow-y: auto;
     }
     

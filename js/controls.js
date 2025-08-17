@@ -422,6 +422,11 @@ function setupMobileMenu() {
         backdrop.classList.add('active');
         menuToggle.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        
+        // Close any open map popups/tooltips
+        if (app.mapRenderer && app.mapRenderer.map) {
+            app.mapRenderer.map.closePopup();
+        }
     }
     
     // Close menu
