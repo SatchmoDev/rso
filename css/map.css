@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+
+#header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    z-index: 1000;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#header h1 {
+    display: inline-block;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+#mapContainer {
+    position: relative;
+    height: calc(100vh - 80px);
+    width: calc(100vw - 300px);
+    float: left;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+#legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    min-width: 180px;
+}
+
+#legend h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #2c3e50;
+    border-bottom: 1px solid #ecf0f1;
+    padding-bottom: 5px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 15px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+#sidebar {
+    width: 300px;
+    height: calc(100vh - 80px);
+    background: white;
+    float: right;
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+#incidentDetails, #statistics {
+    padding: 20px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+#incidentDetails h3, #statistics h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#selectedWoreda {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.stat-label {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ecf0f1;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Leaflet popup customization */
+.leaflet-popup-content-wrapper {
+    border-radius: 5px;
+}
+
+.leaflet-popup-content {
+    margin: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.popup-title {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ecf0f1;
+    padding-bottom: 5px;
+}
+
+.popup-content {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.popup-content strong {
+    color: #2c3e50;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    #mapContainer {
+        width: 100vw;
+        height: calc(60vh - 80px);
+    }
+    
+    #sidebar {
+        width: 100vw;
+        height: 40vh;
+        float: none;
+    }
+    
+    #legend {
+        bottom: 10px;
+        left: 10px;
+        padding: 10px;
+        min-width: 150px;
+    }
+}

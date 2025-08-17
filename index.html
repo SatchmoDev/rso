@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethiopia RSO Incident Tracker</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/controls.css">
+</head>
+<body>
+    <div id="header">
+        <h1>Ethiopia RSO Incident Tracker</h1>
+        <div id="controls">
+            <div class="control-group">
+                <label for="timeRange">Time Range:</label>
+                <select id="timeRange">
+                    <option value="30">Last 30 days</option>
+                    <option value="60">Last 60 days</option>
+                    <option value="90" selected>Last 90 days</option>
+                    <option value="all">All time</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="incidentType">Incident Type:</label>
+                <select id="incidentType">
+                    <option value="all" selected>All incidents</option>
+                    <option value="crime">Crime only</option>
+                    <option value="conflict">Conflict only</option>
+                    <option value="high-severity">High severity</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <button id="refreshMap">Refresh Map</button>
+                <button id="exportData">Export Report</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mapContainer">
+        <div id="map"></div>
+        
+        <div id="legend">
+            <h3>Risk Level</h3>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #CC0000;"></span>
+                <span>High Risk (6+)</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #FFCC00;"></span>
+                <span>Moderate Risk (3-5)</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: transparent; border: 1px solid #999;"></span>
+                <span>Low/No Risk (&lt;3)</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <div id="incidentDetails">
+            <h3>Incident Details</h3>
+            <div id="selectedWoreda">
+                <p>Click on a woreda to view incident details</p>
+            </div>
+        </div>
+        
+        <div id="statistics">
+            <h3>Current Statistics</h3>
+            <div id="statsContent">
+                <div class="stat-item">
+                    <span class="stat-label">Total Incidents:</span>
+                    <span class="stat-value" id="totalIncidents">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">High Risk Areas:</span>
+                    <span class="stat-value" id="highRiskAreas">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Casualties:</span>
+                    <span class="stat-value" id="totalCasualties">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading incident data...</p>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Papa Parse for CSV handling -->
+    <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/dataProcessor.js"></script>
+    <script src="js/riskCalculator.js"></script>
+    <script src="js/mapRenderer.js"></script>
+    <script src="js/controls.js"></script>
+    
+    <!-- Initialize the application -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+    </script>
+</body>
+</html>

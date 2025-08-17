@@ -1,0 +1,18 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Claude Code files
+.claude/
+
+# Temporary files
+*.tmp
+*.temp
+
+# dipnote.github.io subdirectory (not needed for this repo)
+dipnote.github.io/
