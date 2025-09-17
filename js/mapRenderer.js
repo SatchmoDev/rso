@@ -5,7 +5,7 @@ class MapRenderer {
         this.riskCalculator = null;
         this.currentLayer = null;
         this.currentFilters = {
-            timeRange: '90',
+            timeRange: '180',
             incidentType: 'all'
         };
         this.woredaRiskData = {};
